@@ -1,0 +1,11 @@
+# Versions actually used for the recorded CPU experiments (Python 3.13.2).
+torch==2.14.0
+numpy==2.5.3
+matplotlib==3.11.2
+pytest==9.2.0
+pypdf==6.21.4
+beautifulsoup4==4.15.0
+python-pptx==1.0.2
+python-docx==1.2.0
+reportlab==5.1.0
+pypdfium2==5.14.0

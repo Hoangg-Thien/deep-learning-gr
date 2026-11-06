@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "runs_verified": 72,
+  "configurations_verified": 24,
+  "seeds": [
+    11,
+    29,
+    47
+  ],
+  "test_samples": 100,
+  "checkpoint_predictions_recomputed": true,
+  "metrics_recomputed": [
+    "MSE",
+    "MAE",
+    "RMSE"
+  ],
+  "summary_recomputed": true,
+  "no_cross_split_duplicates": true,
+  "validation_only_selection": true,
+  "report_pdf_pages": 16,
+  "pptx_slides": 14,
+  "tests_passed": 35
+}

@@ -1,0 +1,14 @@
+{
+  "data_seed": 2026,
+  "n_train": 200,
+  "n_validation": 80,
+  "n_test": 100,
+  "seeds": [11],
+  "training": {
+    "activation": "tanh", "optimizer": "adam", "lr": 0.01,
+    "batch_size": 64, "epochs": 12, "patience": 5,
+    "min_delta": 1e-8, "device": "cpu", "threads": 1
+  },
+  "baseline": {"n_samples": 200, "width": 10, "depth": 1},
+  "experiments": {"A": [100, 200], "B": [1, 10], "C": [1, 2]}
+}

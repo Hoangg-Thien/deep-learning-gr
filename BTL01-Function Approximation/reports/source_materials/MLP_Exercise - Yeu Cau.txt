@@ -1,0 +1,194 @@
+
+--- PAGE 1 ---
+Học sâu                                                                                                            Bài t   ập xấ     p xỉ      hàm số dung MLP
+
+         BÀI TẬP   XẤ  P XỈ   HÀM SỐ      DÙNG MẠNG MLP
+
+1. Mục tiêu
+•      Xây dựng và huấ     n luyệ    n mạng perceptron đa tầng (MLP) cho bài toán hồi quy/xấ    p xỉ hàm.
+•      Thực hành toàn bộ     quy trình triển  khai  mạng  nơ-ron bằ    ng PyTorch: dữ      liệ u, mô hình,
+    backpropagation, tối ưu và đánh giá.
+•      Thực nghiệm có kiểm soát để phân tích tác động c    ủa số       mẫu huấ      n luyệ    n A, số   nơ-ron tầng ẩn B
+    và sốt   ầng ẩ     n C   .
+•      Trình bày kế     t quả      bằ   ng báo cáo khoa học và slide, có phân tích thay vì ch    ỉ đưa hình hoặ          c sốli       ệu.
+2. Phát biểu bài toán
+Cho hàm mật độ Gaussian hai chiều:
+
+                                 𝑓𝑓(𝐱𝐱) =           1    exp�−   12  (𝐱𝐱−𝝁𝝁)𝑇𝑇𝐶𝐶−1(𝐱𝐱−𝝁𝝁)�
+                                           2𝜋𝜋�det(𝐶𝐶)
+với
+
+                                               𝝁𝝁 = �00� ,  𝐶𝐶 = �  0.3   −0.5−0.5        2  �
+
+Sinh ngẫu nhiên x = (𝑥𝑥1, 𝑥𝑥2) trong miền −2 ≤ 𝑥𝑥1 ≤ 2; −4 ≤ 𝑥𝑥2 ≤ 4 và nhãn mục tiêu y = f(𝑥𝑥1, 𝑥𝑥2).
+Xây dựng mạng MLP có hai đầu vào và một đầu ra ŷ để xấp xỉ      y. Sinh tậ p test độc lập gồ     m 100 mẫu có thêm
+validation riêng phục vụ lựa chọn mô hình.
+3. Yêu cầu kỹ      thuậ      t bắ     t buộ       c
+3.1. Sinh, lưu và khảo sát d  ữliệ      u
+•      Viết hàm tính Gaussian hai chiều đúng công thứ  c; tạo dữ      liệu train/validation/test độc lập; ghi rõ
+    cách chia và random seed.
+•      Sử dụng dữ            liệ  u tạo cố   định và quy trình chia nhất quán để   so sánh các cấu hình. Không sử dụng
+    test để l ựa chọn siêu tham s  ố.
+•      Vẽ scatter 3D của dữ         liệ   u, bề       m ặt hàm thật và mô tả phân bố       c ủa x₁, x₂, y; có thể     lưu thành CSV.
+3.2. Thiết kế và hu ấn luy  ện mạng MLP bằng PyTorch
+•      Bắt buộc vi       ết mô hình bằ  ng torch.nn.Module, nn.Linear, các hàm kích hoạ   t phù hợ        p; tùy chỉnh
+    được sốt       ầng ẩ n và sốnơ   -ron/tầng.
+•      Dùng  PyTorch  tensor, Dataset/DataLoader  (hoặc  TensorDataset/DataLoader),  MSELoss  và  bộ
+    tối ưu (ví dụ      Adam hoặ      c SGD).
+•      Tự  xây dựng vòng lặp  train/validation:  forward  →  loss  →  zero_grad  →  backward  →
+    optimizer.step; sử dụng model.train(), model.eval() và torch.no_grad() đúng ngữ                 c ảnh.
+•     Ghi lại loss theo epoch, checkpoint mô hình tốt nhấ       t theo validation loss; hỗ   trợ   CPU (GPU là
+    tùy chọn).
+•      Đánh giá trên tập test bằng MSE và ít nhất một ch        ỉ số bổ     sung (MAE hoặc RMSE); trực quan
+    hóa y thậ  t–ŷ d  ự đoán và bề     m ặt xấp xỉ     .
+     Không chấ p nhậ       n TensorFlow/Keras hoặ    c các thư viện AutoML thay thế việc triển khai/huấ    n
+luyệ    n MLP bằng PyTorch. Có thể   s ử dụng NumPy, Pandas, SciPy, Matplotlib để           hỗtr      ợ xử    lý dữ       li ệu
+và biểu đồ.
+
+
+                                                              1 / 4
+
+--- PAGE 2 ---
+Học sâu                                                                                                            Bài t   ập xấ     p xỉ      hàm số dung MLP
+
+4. Ba nhóm thực nghi  ệm bắt buộc
+Thiết lậ   p cấu hình chuẩ    n (baseline) và công bố     rõ: seed, batch size, epochs, optimizer, learning rate,
+activation, số   tầng/nơ-ron và điều kiện dừ    ng. Trong từng nhóm chỉ   thay đổi y  ếu tố đang khả   o sát;
+các điều kiện khác giữ nguyên trong phạ            m vi hợp lý.
+ Nhóm                             Biến độc l    ập                 Cấu hình đ  ề xu ất              Kết quảb        ắt bu  ộc
+                                                                   200, 400, 600, 800,              Bảng MSE/MAE hoặc
+ A –Quy mô dữ             liệ   u        Sốm   ẫu train A          1000, 1200, 1400, RMSE;  đồ    thị  sai  số
+                                                                   1600, 1800, 2000                 theo A; nhậ      n xét xu
+                                                                                                    hướng
+                                  Số    nơ-ron tầng  ẩn B;         B = 1, 2, …, 10 (có              Bảng/đồ      thị  so sánh;
+ B –Đ       ộr   ộng              MLP 1 tầng ẩ     n               thể m ở rộng)                    nhậ    n xét thiếu khớ       p và
+                                                                                                    quá khớ     p
+                                                                                                    Bảng/đồ      thị test error,
+ C –Đ       ộsâu                          Sốt   ầng ẩ     n C                    C = 1, 2, 3, 4 (ít nhất) loss hội tụ, th        ời  gian
+                                                                                                    huấ    n luyệ    n
+Với mọi th       ực nghiệm: lưu tham số   và kết quả      từng lần chạ  y; thể hiện train/validation/test có nhãn rõ
+ràng; diễn giải vì sao mô hình tốt/xấu. Khuyế      n khích ≥ 3 seeds, báo cáo trung bình ± độ     lệch chuẩn.
+Test chỉ dùng đánh giá cuối, không để                     t ối ưu c  ấu hình.
+5. Quy định về   mã nguồ          n, tái lập thự       c nghiệm
+•      Tổ    chức mã nguồn rõ chứ            c  năng:  sinh  dữ    liệ  u,  định  nghĩa  MLP,  huấ   n luyệ    n,  đánh  giá,  chạ  y
+    A/B/C và xuất hình/bảng.
+•      Có requirements.txt (hoặ    c environment.yml), README.md, lệnh chạy từng thí nghiệm và mô tả
+    thư mục.
+•      Lưu logs (CSV), hình ả     nh và trọng s  ố.pt/.pth c   ủa mô hình được chọn (n  ếu dung lượng phù hợ              p).
+•     Code chạ  y lại từ    đầ  u được trên Python + PyTorch, không phụ                       thuộc đư      ờng dẫ      n cá nhân; không
+    nộp duy nhấ                  t file HTML xuất từ    notebook.
+•      Phần code mẫu cũ chỉ   để   tham khả    o tư duy tổ   chức; sinh viên phả      i tự    triển khai PyTorch và giải
+    thích các đoạn mã quan trọng.
+6. Yêu cầu báo cáo viết
+     Báo cáo Word và PDF (tham khả   o bố   cục Sample_Report.pdf, không sao chép nguyên kế   t quả
+mẫu), đề     xu ất 10–20 trang nội dung chính, có hình/bả                  ng được đánh sốvà chú thích.
+    1.      Giới thiệ u: mục tiêu, phát bi  ểu bài toán, nội dung đóng góp c        ủa nhóm/cá nhân.
+    2.      Dữ liệ   u: công thứ  c Gaussian, tham sốμ, C, cách l   ấy mẫu, chia dữ    liệ   u, biểu đồvà thố          ng kê.
+    3.      Mô hình và cài đặt: sơ đồ   kiến trúc, các công thức forward/loss, thiế t lập train, PyTorch và
+         môi trường chạ  y.
+    4.      Thực nghiệm: bảng siêu tham số, quy trình đánh giá công bằ           ng; kết quả      A, B, C kèm b ảng và
+         đồth     ị.
+    5.      Thảo luậ  n: diễn giải xu hướng, phân tích trường hợp không như kỳ     vọng, h    ạn chế   và đề   xuấ    t
+         cải tiến.
+
+                                                               2 / 4
+
+--- PAGE 3 ---
+Học sâu                                                                                                            Bài t   ập xấ     p xỉ      hàm số dung MLP
+
+    6.      Kết luận; tài liệ  u tham khả  o; phụl        ục/l  ệnh tái lập nế     u cần.
+7. Yêu cầu slide thuyế         t trình và kiểm tra
+Nộp slide .pptx (khuyế         n khích kèm bản PDF), khoả     ng 10–15 slide, thờ             i lượng trình bày đề   xuấ    t 10–
+15 phút, có thể   có phầ        n hỏi đáp/ki  ểm tra code.
+•      Mục tiêu và bài toán; công thứ    c/dữ li ệu Gaussian; hình minh họa t     ập dữ      li ệu.
+•      Sơ đồMLP, ki   ến trúc được chọn, thành phầ           n chính trong chương trình PyTorch.
+•      Thiết lập A/B/C; bảng tổng hợ       p, biểu đồso sánh và nhậ        n xét kế   t quả     .
+•      Minh họa mô hình xấ                p xỉ vớ   i dữ li ệu thật; kết luận, hạ      n chế   và hư ớng cải tiế    n.
+•      Slide cô đọng, ưu tiên đồ         thị rõ nhãn/trục/đơn vị   ; sinh viên sẵn sàng demo chạ  y code và trả lời
+    về   quy trình train, validation, test.
+8. Sản phẩm và hình thứ    c nộp
+•     Báo cáo: .docx và .pdf; slide: .pptx (và .pdf nế   u có).
+•     Toàn bộ      mã nguồn: .py và/hoặ    c .ipynb, có thể chạy lại; requirements.txt và README.md.
+•     Dữ liệ  u hoặ       c script sinh dữ liệ  u, CSV/log kết quả, hình biểu đồ, mô hình lưu (nếu có).
+•     Nén tên BTL01_Nhom_HoTen_MSSV.zip (nhóm); nhóm ghi thành viên, nhi   ệm vụ và tỷ lệ đóng góp
+    tổng 100%.
+9. Rubric chấ  m điểm (100 điểm)
+
+              Tiêu chí                    Mức đ  ạt đư  ợc / minh chứng                     Điểm tối đa
+                                                        cần có
+                                         Đúng  hàm  Gaussian,  μ,  C  và
+                                         miề  n dữ        liệ  u  (5);  chia  tập và
+ 1. Dữ liệ   u & bài toán                seed hợp lý, tránh rò rỉ  (3);          10
+                                         trự  c quan hóa/kiểm tra dữ liệ  u
+                                         (2).
+                                         MLP tùy biến    đúng    bằ  ng
+                                         nn.Module (8); vòng lặp
+                                         train/backprop/optimizer
+ 2. Triển khai PyTorch                   chuẩ  n (8); 25
+                                         validation/checkpoint và dự
+                                         đoán/đánh giá (5); cấu trúc
+                                         code, README, chạy lại được
+                                         (4).
+                                         Cấu hình so sánh công bằ          ng
+ 3. Thự  c nghiệm A                      (3); đầy đủ   kế  t quả      bả  ng/đồ   thị 10
+                                         (5); phân tích ảnh  hưởng số
+                                         mẫu (2).
+                                         Cấu hình so sánh công bằ          ng
+ 4. Thự  c nghiệm B                      (3);  đầy  đủ    bả  ng/đồ      thị  (5); 10
+                                         phân        tích        độ            rộng,
+
+
+                                                         3 / 4
+
+--- PAGE 4 ---
+Học sâu                                                                                                            Bài t   ập xấ     p xỉ      hàm số dung MLP
+
+                                              under/overfitting (2).
+                                              Cấu hình so sánh công bằ          ng
+ 5. Thự  c nghiệm C                           (3);  bảng/đồ    thị  và thờ  i  gian         10
+                                              train (5); phân tích độ        sâu (2).
+                                              Chỉ  số    MSE  và  MAE/RMSE,
+ 6. Đánh giá & phân tích chung                biểu  đồ      y–ŷ  hoặ     c bề  mặt (5);     10
+                                              diễn giải, tổng hợ     p lựa  chọn
+                                              mô hình và giới hạn (5).
+                                              Đầy   đủ       bố       cục,   rõ   phương
+                                              pháp và tham số (5); hình/bả  ng
+ 7. Báo cáo viết                              và số    liệu truy vế        t  được (5);     15
+                                              trình bày, tài liệu  tham  khả    o
+                                              (5).
+                                              Slide rõ, đầy đủ   nội dung tr    ọng
+ 8. Slide & thuyế    t trình                  tâm (4); thuyết trình/phân tích               10
+                                              kế t quả       (3);  trả  lời câu hỏi và
+                                              demo/giải thích mã nguồn (3).
+ TỔNG                                                                                                 100
+Nguyên tắc ch  ấm : Chấm theo minh chứng thự c tế; mụ    c nào thiếu hoặc không chạy/không kiểm
+chứng được sẽ      không được điểm tương ứng. Trong mỗi tiêu chí, hoàn thành đầ    y đủ     và đúng đạ  t tố   i
+đa; thiế u một phầ    n tính theo tỷ   lệ mức đáp ứng. Sao chép kết quả      mẫu mà không có log/mã nguồn
+kiểm chứng không được tính là kế   t quả th ực nghiệm.
+                                                              ---o0o---
+                                                                (Hết)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 4 / 4

@@ -1,0 +1,30 @@
+.venv/
+.venv-run/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.mplconfig/
+submission/*.zip
+
+# Local credentials and editor/Office temporary files
+.env
+.env.*
+!.env.example
+~$*
+*.tmp
+*.bak
+.ipynb_checkpoints/
+.ruff_cache/
+.mypy_cache/
+
+# Keep official experiment evidence; omit auxiliary runs and PDF previews
+/results/*/
+!/results/logs/
+!/results/figures/
+!/results/tables/
+!/results/checkpoints/
+!/results/verification/
+/results/verification/pdf_previews/
+
+# Local packaging console output (archive is generated separately)
+/submission_packaging_output.txt

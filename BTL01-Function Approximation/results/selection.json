@@ -1,0 +1,10 @@
+{
+  "experiment": "C",
+  "value": 4,
+  "run_id": "C_0004_seed11",
+  "seed": 11,
+  "mean_validation_mse": 1.0993355967219202e-06,
+  "criterion": "minimum mean validation MSE across seeds, then minimum validation seed",
+  "locked_before_test": true,
+  "locked_utc": "2026-11-03T07:21:24.524902+00:00"
+}

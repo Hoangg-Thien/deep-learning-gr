@@ -1,0 +1,21 @@
+[
+  {
+    "file": "MLP_Exercise - Yeu Cau.pdf",
+    "pages": 4,
+    "sha256": "40d5ded8e527320fc900d928f7f6fae88f7f8f2df312d623b0370b67c2714095"
+  },
+  {
+    "file": "MLP_Exercise.pdf",
+    "pages": 9,
+    "sha256": "21703169c4508847607dcf4776a85297a56a46fa889ae7a43ac9f6e61d49a0c5"
+  },
+  {
+    "file": "Sample_Report.pdf",
+    "pages": 12,
+    "sha256": "a709135fe874d15c6225eac8c64c0d6a4a5a504b054966cbee4147095d087103"
+  },
+  {
+    "file": "Sample_Code.html",
+    "sha256": "e96532f108ccd86faaefb1d3871a2e822b30a1b4da4c191e4df76e98bff61f2e"
+  }
+]

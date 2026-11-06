@@ -1,0 +1,179 @@
+
+--- PAGE 1 ---
+                       Exercise #2
+Function Approximation MLP
+
+--- PAGE 2 ---
+The Data
+
+                   • Given a 2-D Gaussian Function
+
+
+
+
+                                   μ    =                  0µ1=0C   =                 20.3−0.5
+                                      X    µ                     X                     
+                                             2                        −  0. 5          
+                   • Generate A training samples                      randomlyX =i                    y(                  2xi1                   i,xi,)
+                                     −                                                                                                         i2                                                     2≤xi                                                 y1                          ≤≤2,−4≤xi≤4,and0≤1
+
+                   • Generate 100 test samples similarly
+
+
+
+
+                                                                                                                                                        2
+
+--- PAGE 3 ---
+Network Structure
+
+         • MLP with one hidden layer
+             •  2 input nodes (+ bias)
+             •  1 output node
+             •  B hidden nodes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3
+
+--- PAGE 4 ---
+Network Structure
+
+         • MLP with more than two hidden layers
+             •  2 input nodes (+ bias)
+             •  1 output node
+             •  C hidden layers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+
+--- PAGE 5 ---
+Report (1/3)
+
+• Performance against the # training samples (A)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                         #-samples
+
+
+5
+
+--- PAGE 6 ---
+Report (2/3)
+
+          • Performance against the # hidden nodes (B)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          (B)
+                                                                              6
+
+--- PAGE 7 ---
+Report (3/3)
+
+• Performance against the # hidden layers (C)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                         # Hidden Layers(C)
+
+
+7
+
+--- PAGE 8 ---
+Pay Attention
+
+• Submission
+     •  Report file
+          •   Brief summary for source codes
+          •   Results for many experiments with various parameter
+            settings
+          •   Analysis and explanation about the results in your own way
+     •  Source Code using Py                      torch
+
+• Due
+     •  Try to use sample program shown in the class
+     •  Source code & r                               esults will be examined in the class
+
+
+
+8
+
+--- PAGE 9 ---

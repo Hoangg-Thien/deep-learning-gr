@@ -1,0 +1,38 @@
+{
+  "started_utc": "2026-11-03T06:59:57.983435+00:00",
+  "status": "complete",
+  "config_sha256": "6e659e88532707f082c5dcb27d5bd9756718137bc7a0706951fea7778c96e629",
+  "python": "3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.22621-SP0",
+  "torch": "2.14.0+cpu",
+  "numpy": "2.5.3",
+  "cuda_available": false,
+  "data_directory": "D:\\deep-learning-gr\\BTL01-Function Approximation\\data",
+  "requested_group": "all",
+  "completed_utc": "2026-11-03T07:21:31.068021+00:00",
+  "run_count": 72,
+  "selection": {
+    "experiment": "C",
+    "value": 4,
+    "run_id": "C_0004_seed11",
+    "seed": 11,
+    "mean_validation_mse": 1.0993355967219202e-06,
+    "criterion": "minimum mean validation MSE across seeds, then minimum validation seed",
+    "locked_before_test": true,
+    "locked_utc": "2026-11-03T07:21:24.524902+00:00"
+  },
+  "dataset_sha256": {
+    "train": "67a76208aef6e01fc85556a9547c891fa444e209c388b62d60012e1a63a248f4",
+    "validation": "6589674dec7aa0887ee3e2711ef7af28f70921ba22009de38cb2970d6e30cc4b",
+    "test": "3a53d8c4a816f2fd293ef673d92083a869409958016c017b824512655c27c8f9"
+  },
+  "source_sha256": {
+    "src/__init__.py": "045920453f1147f71c48948e1c749b7e439d1edd06046223eb51e17509846716",
+    "src/data.py": "0164ce7f73f745df09cb9b5f0b4265ba3e7929630a6d60e9104e58e66bfca6fc",
+    "src/experiments.py": "2fd5255b6a80c67a2f4e4a52a38ba805341a38bb504386a41aef7dddf2f626de",
+    "src/metrics.py": "dafda97e35e3fccd89d0d08364d58d455147b07bd873ec0a43ef64112bda9e7c",
+    "src/model.py": "01474289734de3e459f7aa0dc421227ad8e53d600348fbadeb40e0eb95c5bca2",
+    "src/training.py": "bc459fe2564999c2f8a7f4b65e6328107bf7ea3c1b8c04398b4c3623b3ce2ef0",
+    "src/visualization.py": "a0d567181d732efac0b7d276e66e37cfb86a2b2b8481230755ef8b22a5f22f16"
+  }
+}
